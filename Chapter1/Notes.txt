@@ -1,0 +1,12 @@
+
+----- Basics -----
+
+1.1) Statement and the structure of a program
+
+> Introduction: 
+
+	In this chapter, we cover the basics to every C++ program. Because the topics are very numerous and hard to cover all them these are split up to optimize the topic. Later topics will be explored in more detail as they are covered. 
+
+> Statements: 
+
+	A compute program is a sequence of instructions that tell the computer what to do. A statement is a type of instruction that causes the program to perform specific actions.
