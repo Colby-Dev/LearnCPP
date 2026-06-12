@@ -7,6 +7,22 @@
 
 	In this chapter, we cover the basics to every C++ program. Because the topics are very numerous and hard to cover all them these are split up to optimize the topic. Later topics will be explored in more detail as they are covered. 
 
-> Statements: 
+> Statements:
 
-	A compute program is a sequence of instructions that tell the computer what to do. A statement is a type of instruction that causes the program to perform specific actions.
+
+	A compute program is a sequence of instructions that tell the computer what to do. A statement is a type of instruction that causes the program to perform specific actions.Statments are the most common type of instruction in a C++ program. This is because they are the smallest independent unit of computation in C++. Most, but not all, statements in C++ end in a semicolon. C++ is compiled into many machine language instructions from statements. 
+
+	For advanced readers: 
+
+		- Declaration statements
+		- Jump statements 
+		- Expression statements
+		- Compound statements
+		- Selection statements (conditionals)
+		- Iteration statements (loops)
+		- Try blocks
+
+> Functions and the main function:
+
+
+	
