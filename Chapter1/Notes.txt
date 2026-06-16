@@ -76,4 +76,16 @@ When the program is run, the statements inside of main are executred in sequenti
 
 	In 1.1, we discussed that programs are just instructions and statements, and that functions are just collections of statements that handle specific parts of the functions. Programs actually produce results by manipulating data, data being any information that can be moved, written, and stored. 
 
-	A program can acquire data to work with in many ways, such as a file, database, network etc. A single peice of this data is called a value or data value. Common examples are numbers, single characters ('') , or text ("")
+	A program can acquire data to work with in many ways, such as a file, database, network etc. A single peice of this data is called a value or data value. Common examples are numbers, single characters ('') , or text (""). 
+
+	Values placed directly into the code are called literals. Literals are covered in detail in 5.2. Literals are the easiest way to provide raw values for your program, but they have shortcomings. Literals are read-only values, so their values can't be modified. 
+
+> Random Access Memory 
+
+	The main memory in a computer is called Random Access Memory (RAM). When programs run the operating system loads the program into RAM. Any data that is hardcoded into the program is loaded at this point. 
+
+	The OS also allocate some additional RAM for the program to use while it runs. Common uses for this memory are to store values entered by the user, to store data read in from a file or network, or to store values calculated while the program is running so they can be used again later. RAM can be thought of as a series of numbered boxes that can be used to store data while the program is running. 
+
+> Objects and Variables
+
+	
