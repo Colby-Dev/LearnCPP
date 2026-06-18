@@ -118,4 +118,54 @@ When the program is run, the statements inside of main are executred in sequenti
 
 --> Variable Initialization 
 
-	
+	The downside of assigning a variable in its own step is that it produces more redundant code. These steps can be combined. This is called initialization. By using the data type, variable name, two curly braces {}, and finally the data the variable holds. 
+
+	int width {5};
+
+--> Different Forms of Initialization
+
+	Initialization in C++ is complex. There are 5 common forms of initialization: 
+
+		1) default initialization - int a
+
+		2) copy initialization - int b = 5
+
+		3) direct list initialization - int c {5}
+
+		4) direct initialization - int d (6)
+
+		5) value initialization - int e {};
+
+--> Default Initialization
+
+	When no initializer is provided. This leaves the variable with no determinate value or garbage value. 
+
+--> Copy Initialization
+
+	Using the assignment operator (=) this copies the value from the rigt hand side to the left hand side. This is less efficient as creating the copy requires the compiler to create a register in memory for the copy when it is being initalized. 
+
+--> Direct Initialization
+
+	Using paraenthesis to assign variables with data. This has fallen out of favor for direct list initalizations, due to its broader use case. Direct initalization is for values explicitly cast to another type. 
+
+--> List Initialization
+
+	The most modern way of list initialization. This works well as it clearly states that we are initalizing an object that will hold data, thus whenever there are {} we know we're initalizing something. 
+
+	This also is helpful because the complier will catch any errors or warnings from the progam at compile time. One of these would be using int a {4.5} which should be a double but user would be warned at compile time. 
+
+--> Value Initialization and Zero Initialization
+
+	When initialized values are set to an empy data value such as {}, the compiler will initalize the object to default values, which are usually 0 (zero initialization) but can be non zero if the default values are defined like in classes. 
+
+--> Instantiation
+
+	Basically meaning a variable is created, allocated, and initalized. This is considered an instance of the object named as said variable name. This can be applied any other class type objects but can broadly stand for any object. 
+
+--> Initializing Multiple Variables
+
+	Initalization of multiple variables at once can happen. Doing so requires the variable to be initalized with the value for each specific variable. Example of this: 
+
+		int a {5}, b{5} // Both are initalized to be 5
+
+--> 
