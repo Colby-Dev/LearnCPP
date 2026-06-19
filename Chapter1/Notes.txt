@@ -221,8 +221,53 @@ When the program is run, the statements inside of main are executred in sequenti
 
 	Inputting data also has a two staged process similar to cout. The inputted characters are added to the end of the buffer. The enter key press is also passed the \n character to break the line. 
 
-	The >> operator removes characters from the front of the buffer and assigns them via copy assigned to the associated variable. 
+	The >> operator removes characters from the front of the buffer and assigns them via copy assigned to the associated variable. An example below shows how the buffer works: 
 
+		int main() { 
 
+			int x {};
+			int y {};
+
+			std::cout << "Enter two numbers: \n"; // 5 and 4 are entered 
+
+			std::cin >> x; // 5 is copy assigned here
+
+			std::cout << "Enter another number: \n"; // this part of the code is skipped as the buffer assigns y in the next line already.
+
+			std:: cin >> y; // 4 is automatically assigned off the buffer
+
+			std:: cout << "You entered: " << x << " and " << y << endl; // buffer of 6 is flushed from endl
+
+			return 0;
+			
+			}
+
+--> The Basic Extraction Process
+
+	The simplified view of how >> works for input is:
+
+	 - by aborting if any prior extraction failed, 
+	 - discarding any leading whitespaces, 
+	 - if the input buffer is empty the program will wait for more user input,
+	 - extracts as many consecutive characters as possible
+	 - previous assignments are not affected by input buffer errors
+
+--> Operator<< vs Operator>> 
+
+	Easy ways to remember cin vs cout vs << vs >> is: 
+
+	- std::cin and std::cout always go on the left hand side of the operator
+	- std::cout is used to output values
+	- std::cin is used to input values
+	- << is used with std::out (shows the direction data is moving)
+	- >> is used with std::in
+	
+1.6) Unitialized Variables and Undefined Behavior
+-------------------------------------------------------------------------------------------
+
+--> Uninitialized Variables
 
 	
+
+
+
