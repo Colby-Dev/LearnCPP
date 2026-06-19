@@ -168,4 +168,61 @@ When the program is run, the statements inside of main are executred in sequenti
 
 		int a {5}, b{5} // Both are initalized to be 5
 
---> 
+--> Unused Initialized Variables Warnings
+
+	Modern compilers will throw warnings if variables are initialized but now used. Some settings will treat these warnings as errors. If this error is being shown, consider removing the variable, or understanding its purpose. 
+
+--> The [[maybe_unused]] Attribute
+
+	In the event we are using variables that are going to be used later in the program, we can use the [[maybe_unused]] attribute before the initialization of the variable to avoid the compiler complaining about the use. The biggest benefit is that the compiler will optimize these variables out to improve performance. 
+
+		double pi {3.14} //Used var
+		[[maybe_unused]] string velocity {dx/dy} // Unused var
+
+1.5) Introduction to iostream: cout, cin, and endl
+-------------------------------------------------------------------------------------------
+
+--> The Input/Output Library
+
+	The I/O library is part of the C++ standard. This library allows for user inputs and outputs. This is included in the header file #iostream. The normal program has these headers put first in most programs. 
+
+--> Std::cout
+
+	The cout predefined variable is used to send data to the console to display. cout stands for character output. C++ uses insertion operators << to take in the value that will be outputted. 
+
+--> Using std::endl to Output a Newline
+
+	The endl predefined variable is used to break lines on the output of the console. This behavior will cause the cursor to move to the next line. 
+
+--> Std:cout is Buffered
+
+	The output of text is buffered in a queue to the console. The output is stored in a region of memory set aside to collect request. The buffer periodically flushes the data collected, which forces all the data to the console. Endl flushes the buffer automatically. 
+
+	If the program crashes the buffer is flushed but no data is displayed. Bufferring in this way is optimal as it allows data to flow efficiently not all at once. 
+
+--> Std::endl vs \n 
+
+	Using endl is inefficient as it performs 2 jobs, moving the cursor to a new line and flushing the buffer. Using multiple endl at the end of statements will continue to do these 2 jobs which is not optimal. 
+
+	Using \n will not flush the buffer and is therefore ideal when outputting many objects to the console. \n can be added to the end of strings to break line as the compiler reads this as a single linefeed chat (LF) 
+
+--> Std::cin
+
+	The cin predefined variable is used to read input from the keyboard. We typically use the extraction operator >> to put the input data in a variable. Defining and initalizing a variable to hold user input is needed to use user data. 
+
+		int x{};
+		std::cin >> x; 
+
+		cout << x << endl;
+
+	cin is used for basic input as end users must press the enter key in order to submit data to the program and cin. Third party libraries are used to gain other functionality. 
+
+--> std::cin is buffered
+
+	Inputting data also has a two staged process similar to cout. The inputted characters are added to the end of the buffer. The enter key press is also passed the \n character to break the line. 
+
+	The >> operator removes characters from the front of the buffer and assigns them via copy assigned to the associated variable. 
+
+
+
+	
