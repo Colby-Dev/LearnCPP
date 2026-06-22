@@ -58,6 +58,7 @@ When the program is run, the statements inside of main are executred in sequenti
 
 	Rules that programs follow are designed around certain spaces and symbols. This is called syntax. The C++ programming language syntax describes how elements must be written and arranged in order for the program to be considered valid and run. Otherwise this is considered a syntax error. 
 
+
 1.2) Comments
 -------------------------------------------------------------------------------------------
 
@@ -70,6 +71,7 @@ When the program is run, the statements inside of main are executred in sequenti
 --> Multi line comments <--
 
 	Multi-line comments are used for commenting many lines without using the // operator for each line. Often lines are numerous so using a multi-lined comment is beneficial for reading programs or putting extensive notes. The operator used to do this is the /* */. Everything inside of the two stars will be commented. 
+
 
 1.3) Introduction to objects and variables
 -------------------------------------------------------------------------------------------
@@ -108,6 +110,7 @@ When the program is run, the statements inside of main are executred in sequenti
 --> Data types <-- 
 
 	In C++, the type of an object must be known at compile time, so that the compiler knows what the data type of the object is and how much memory it requires. INT data types hold whole numbers. 
+
 
 1.4) Variable Assignement and Initialization
 -------------------------------------------------------------------------------------------
@@ -178,6 +181,7 @@ When the program is run, the statements inside of main are executred in sequenti
 
 		double pi {3.14} //Used var
 		[[maybe_unused]] string velocity {dx/dy} // Unused var
+
 
 1.5) Introduction to iostream: cout, cin, and endl
 -------------------------------------------------------------------------------------------
@@ -262,12 +266,57 @@ When the program is run, the statements inside of main are executred in sequenti
 	- << is used with std::out (shows the direction data is moving)
 	- >> is used with std::in
 	
+
 1.6) Unitialized Variables and Undefined Behavior
 -------------------------------------------------------------------------------------------
 
 --> Uninitialized Variables
 
-	
+	In C++, most variables are not given values when they are initialized. Instead they are given garbage values, thus being called uninitialized. Obviously this wouldnt include assignment of the variable because then the variable would have a value. 
+
+	Often times modern compilers will warn when an uninstialized local variable is used. This issue can become more prevelant as programs become more complex and assign variables from certain data structures. 
+
+--> Undefined Behavior
+
+	As a result of this strange behavior, C++ language defines this as Undefined behavior. This undefined behavior is not explicitly stated what will happen when the code is compiled. Doing so is considered bad programming. 
+
+--> Implementation Defined Behavior and Unspecified Behavior
+
+	Libraries and specific compilers are created with specific behavior that will take place when using the compiler or library. This is called implementation defined behavior. This behavior is documented and the outputs are expected. 
+
+	Unspecified behavior is similar to implementation behavior except for oen key part. That being behavior that the compiler or library may exibit but it is not documented. Generally we want to avoid both because we want to design and write software understanding and expecting the output. 
 
 
+1.7) Keywords and Naming Identifiers
+-------------------------------------------------------------------------------------------
 
+--> Keywords
+
+	C++ reserves 92 keywords for special uses. These keywords are normal programming syntax with a few unique ones. An example would be while, for, etc. 
+
+--> Identifier Naming Rules
+
+	C++ gives alot of flexibility to identifiers (name of variables or functions, etc.) As long as it's not a keyword, no special characters, and are case sensitive. 
+
+
+1.8) Whitespace and Basic Formatting
+-------------------------------------------------------------------------------------------
+
+--> Some Language Elements Must Be Whitespace Separated
+
+	Whitespace is required in between keywords like data types and the identifer name for the variable. Following data types , the next character after the whitespace is considered to be identifier name of the variable. 
+
+--> Quoted Text Takes the Amount of Whitespace Literally
+
+	Inside of quotation marks " " every character is taken as a literal, meaning the compiler just reads it as one continuous string. The only characters inside of quotes that aren't are escape characters. New lines are not allowed in quoted text. Example: 
+
+	std::cout << "Hello
+		     world"
+
+--> Basic Formatting
+
+	C++ is a whitespace independent language so it does not force any kind of formatting restrictions beyond basic syntax. Each statement should have its own line and should not run off a reasonable amount. Functions use curly braces and all statements inside should have at least one tab. 
+
+--> Automatic Formatting
+
+	Modern IDEs will format code as it's typed. 
