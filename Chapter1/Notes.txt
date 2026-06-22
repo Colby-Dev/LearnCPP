@@ -319,4 +319,111 @@ When the program is run, the statements inside of main are executred in sequenti
 
 --> Automatic Formatting
 
-	Modern IDEs will format code as it's typed. 
+	Modern IDEs will format code as it's typed, and throw errors / warnings as they show when writing code. This helps code maintain its standard formatting. 
+
+1.9) Introduction to literals and operators
+-------------------------------------------------------------------------------------------
+
+--> Literals
+
+	A literal is known as a fixed value taht has been inserted into the code, such as assignment with a value like int x = {5};. Literals and variables both have values and types, except a variable's value can be altered and a literal will always remain the same. 
+
+	std::cout << 5 << '\n'; // prints the value of a literal 
+
+	std::cout << x << '\n'; // prints the value of variable x
+
+Objects and variables represent memory locations that hold values. These calues can be fetched on demand. 
+
+--> Operators
+
+	Operators in C++ are mathmatical symbols that the compiler recognizes to perform a function. For example 1 + 2, the compiler understands the symbol and the context of the data types of the literals (called operands in this context) and applies it to give us 3, often called the return value.
+
+	The number of operands that an operator takes as input is called the arity. This can be applied when dicussing the context of the operator, such as Unary (-1), Binary(1+2), Ternary (2*3+1), and Nullary. 
+
+--> Chaining Operators
+
+	Operators can be chained together such that the output is the result of the operators and their operands. The order of operations (PEMDAS) applies to this. 
+
+--> Return Values and Side Effects
+
+	Most operators in C++ have side effect behaviors of the return types. This means applying the conversions of positive numbers to negatives. A simple side effect of operands is changing the value of the variable will update the value. Example: 
+
+		int x = 5;
+		x+= 5;
+		cout << x;
+		
+		>>> 5
+
+1.10) Introduction to Expressions
+-------------------------------------------------------------------------------------------
+
+--> Expressions
+
+	An expression is a non-empty sequence of literals, variables, operators, and function calls that calculate a value. The process of executing an expression is called evaluation, and the value produced is the result of the expression. 
+
+	When an expression is evaluated, each term inside the expression is evaluated until a single value remains. Expressions also do not need to end with a semicolon ; since they are evaluated implicitly. 
+
+--> Expression Statements
+
+	The (;) symbol takes an expression to an expression statement. The reason we use this is because we need to evaluate the return value. We look at the expression x = 5 which assigns the variable x to the value of 5. When using, x = 5; the expression statement will evaluate the return value which in this case is nothing. 
+
+--> Useless Expression Statements
+
+	Expressions that are deemed useless, as in the return value does not have any context for functional purpose, compilers will often discard the value and warn that they are doing so. 
+
+--> Subexpressions, Full Expressions, and Compound Expressions
+
+	A subexpression is an expression used as an operand. For example, x = 4 + 5, 4 + 5 is the subexpression. 
+
+	A full expression is an expression that is made of the subexpression. For example, x = 2 + 3
+
+	A compound expression is an expression that contains two or more uses of operators For example, x = 3 + 3, the = and + operators are both used. 
+
+1.11) Developing your first program
+-------------------------------------------------------------------------------------------
+
+--> Multiply by 2
+
+	The program below ask for user input then multiplies the number entered by 2. 
+
+	#include <iostream> 
+	using namespace std; 
+
+	int main(){ 
+
+    		int u_input;
+
+    		std::cout << "Enter an integer: ";
+    		std::cin >> u_input;
+    
+    		std::cout << "Double the integer is: " << u_input * 2<< endl;
+  		
+		return 0;
+	}
+
+	This is the optimal solution as it prevents us from overwriting user input variables or avoiding copying variables back and forth. 
+
+--> Quiz 
+
+	Create a program that prompts the user for 2 integers and add and subtract them both: 
+
+#include <iostream> 
+using namespace std; 
+
+int main(){ 
+
+    	int u_input_1;
+    	int u_input_2;
+
+    	cout << "Enter an integer: " << endl;
+    	cin >> u_input_1;
+
+    	cout << "Enter another integer: " << endl;
+    	cin >> u_input_2;
+
+    	cout << u_input_1 << " + " << u_input_2 << " is " << u_input_1 + u_input_2 << endl;
+    	cout << u_input_1 << " - " << u_input_2 << " is " << u_input_1 - u_input_2 << endl;
+
+
+    		return 0;
+	}
