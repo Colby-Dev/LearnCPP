@@ -1,0 +1,34 @@
+
+-----------------------------------------------------------------------------------------
+Chapter 2                    
+-----------------------------------------------------------------------------------------
+                                
+2.1) - Introduction to Functions
+--------------------------------
+
+	A function is a reusable sequence of statements designed to do a particular job. Every c++ program must have the main() function where all code begins to execute, but this can cause confusion on how programs are written. To fix this issue, user defined functions outside of the main() function are created to do certain task. Example: 
+
+	returnType functionName()
+		{
+			// Function body
+			
+		{
+				
+	The first line of the function is called the header which states the return type which will either be int (such as int main) or void. The parentheses tell the compiler we are defining a function. Nested functions are not supported. 
+
+
+2.2) - Function Return Values (Value-Returning Functions)
+---------------------------------------------------------
+
+	Using functions ultimately needs to return values or update values when the function is executed. When you write a user defined function, you can specify the return type so a value will be returned to the caller. A function returning a value is called a value returning function. If a value returning function does not return a value UB will occur.
+
+	But first the function header must specify the return type of the function. Usually for main() it is int. In some cases, user defined functions may not return any value, in such cases the return type is void. In the main functions case, it cannot be called by other functions. 
+
+	When a function exits, depending on the return type or not it may need to use the return keyword to signal to the compiler the function is completed followed by a value which would be given to the caller. Functions can only return a single value. 
+
+	The return type from the main function is called a status code or an exit code. Returning the exit code 0 means the program ran normally whereas any code other than 0 means an error occurred. If no return statement is given, main() will implicitly return 0.
+
+2.3) - Void Functions (Non Value Returning Functions)
+-----------------------------------------------------
+
+
