@@ -31,4 +31,36 @@ Chapter 2
 2.3) - Void Functions (Non Value Returning Functions)
 -----------------------------------------------------
 
+	Functions are not required to return a value back to the caller of the function. To tell the compiler that we do not expect to return a value we use the void return type.In these functions we do not even need to specify the return keyword. In a void function you can use return; but this will just exit the function and is redundant. 
+
+	Using void functions, since no value is returned they need to be assigned to a variable in order to be printed with cout. The reason being the compiler has no value to output since its just a function call with no returning value. It would be the same as calling nothing. 
+
+	Obviously it is also an error to try and compile a void function with a return statement and a value. This would conflict with the complier. 
+
+2.4) - Introduction to Function Parameters and Arguments
+--------------------------------------------------------
+
+	Passing information to a function being called is referred to as a function parameter. Function parameters are variables that are used in the function header to pass data to the inner parts of the function. 
+
+	When instantiating a function parameters must be initialized with the data type and a psuedo value. When calling the function with a value in the parameter, this is referred to as the argument.When the function is called the parameters of the function are created as variables, and the values are copied into the matching parameter. This is known as pass by value. 
+
+	In certain cases, unreferenced params that are not used. The compiler will warn but not stop the end user program. Function params and return values are very important.
+
+2.5) - Introduction to Local Scope
+----------------------------------
+
+	Variables that are defined in the body of a function are called local variables. They are only accessible from within that functions scope. They can be returned by said function to be assigned after the function returns.
+
+	Local variables are created when instantiated in the function header or body, they are alive while the function is executing then destroyed at the end of the function's curly brace. They are destroyed in reverse order of instantiation. 
+
+	The time between creation and destruction of local variables is known as the lifetime of the variable. After destruction, the memory used up by the variable or object will be deallocated. 
+
+	Variables defined in scope are able to be accessed by identifiers. When variables are out of scope they are no longer able to be accessed and will result in a compile time error. Local variables are destroyed when they are out of scope automatically. This also means that names used for functions parameters or variables declared in a function body are only visible within the function that delcares them. This helps keep functions independent.
+
+	When a variable is needed within a function use a function parameter when the caller will pass in the initialization for the variable as an argument. Otherwise, use a local variable. 
+
+
+2.6) - Why Functions are Useful, and How to Use Them Effectively
+----------------------------------------------------------------
+
 
