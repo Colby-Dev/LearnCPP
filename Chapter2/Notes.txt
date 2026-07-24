@@ -63,4 +63,107 @@ Chapter 2
 2.6) - Why Functions are Useful, and How to Use Them Effectively
 ----------------------------------------------------------------
 
+Functions are useful for many reasons: 
+
+	* Organization
+	* Reusability
+	* Testing
+	* Extensibility 
+	* Abstraction
+
+Basic guidelines for writing functions: 
+
+	Groups of statements that appear more than once should be made into a function. 
+
+	Code that has a well-defined set of inputs and outputs is a good candidate for a 
+	function, particular if it is complicated.
+
+	A function should generally perform one (and only one) task. 
+
+	When a function becomes too long, too complicated, or hard to understand, it
+	can be split into multiple sub functions. 
+
+2.7) - Forward Declarations and Definitions
+-------------------------------------------
+
+	Functions must be instantiated before they are used. When addressing compilation errors, always resolve the first error then the work down that way as it identifies issues like forward declarations.
+
+	Functions will compiler without parameter names and just types names but this is confusing so using parameter names are always best. --> int add(int, int)
+
+	Forward declarations of functions are important though, even without reordering the program to compile. We use forward declarations to instantiate the function to the compiler about its existance in a different code file. This is also very useful for recursive functions that call each other as you cannot reorder the functions. You also do not need to define any parameters in the function in a forward declaration just the type. An example of a forward declaration see Example_1.cc
+
+	Forward declarated functions do not need to be defined in code either to compile and run. If the forward declaration is initialized but never defined there is no issue. However, if the function is called with no definition, the compiler will not throw an error until the function is called. From there it will show that there is an unresolved external function. 
+
+	Forward declaration can also be applied to anything that is being instantiated. Variables can also be declared before they are defined which is helpful to tell the compiler the existance of the variable before we need to assign it any value. You can even do this when the variable is used before it is defined, such as declaring the variable in a function parameter, using it in the body of a function, then after the body of the function instaniating the variable. 
+
+		Decalaration of a variable - Tells the compiler about an identifier and its type
+
+		Definition of a variable - Implements a function or instantiates a variable
+
+		Pure decalration of a variable - A declaration that isn't a definition 
+
+		Initialization - Provides an initial value for a defined object
+
+	The One Definition Rule (ODR) is a well-known rule in C++. THe ODR has 3 parts: 
+
+		1) Within a file, each function, variable, type, or template in a given scope can 
+		   only have one definition.
+
+		2) Within a program, each function or variable in a given scope can only have one
+		   definition.
+
+		3) Types, templates, inline functions and inline variables are allowed to have 
+		   duplicate definitions in different files, so long as each definition is identical.
+
+
+2.8) Programs with Multiple Code Files
+--------------------------------------
+
+	When programs get larger and have multiple code files the main function may call or use forward declaration functions from other files. Using a forward declaration we can let the compiler know about the functions existence before it is called in the main function. Unlike forward declarations in the same file you can use another file with the function definition. 
+
+	Using this method we can give access to other functions that live in another file. 
+
+	C++ is designed so that each source file can be compiled independently, with no knowledge of what is in the other files. Therefore, the order in which files are actually complied should not be relevant. 
+
+2.9) Naming Collisions and an Introduction to Namespaces
+--------------------------------------------------------
+
+	C++ requires all identifers be non-ambiguous. An error will be thrown is a naming collision as the compiler cannot tell them apart. If colliding identifiers are introduced into the same file this will result in a compile time error, as well as if the identifiers are introduced into seperate files. 
+
+	To avoid identifiers running into naming collisions, using unique names or understanding the scope of which they are called by the main function will avoid this. A namespace provides a way to disambiguate a function since we can use the namespace scope to declare specifically which function we are referring to. Unless specified, all functions are in the global namespace scope. 
+
+	When using an identifier or function that is defined inside a non-global namspace you need to tell the compiler where the identifier is living using the namespace::identifer syntax. The :: is called the scope resolution operator. It is not advised to use the using namespace directive since it allows us to just call functions without identifying them. 
+
+2.10) Introduction to the Preprocessor
+--------------------------------------
+
+	When a program compiles it does not compile the file exactly as it was written. Instead the preprocessing phase is triggered. The preprocessor makes various changes in memory such as removing comments, and processes #include directives. After this process the result is the translation unit which is what is compiled by the compiler. Thus this process is called translation. 
+
+	The preprocessor scans the program looking for preprocessor directives. These are instructions that start with the #. One of these directives is the #include directive which tells the preprocessor to include the contents of the file that comes after the directive. 
+
+	The #define directive can be used to create macros of functions and objects, although functions are generally unsafe and can be used like normal functions that can be used in other files as well. Object like macros can be used to define glocal variables that will be converted implicitly at the preprocessor stage of compliation. This is legacy code as of now any #define directive should be used without substitution text. 
+
+	The conditional compliation preprocessor directives allow for control over what will compile and what wont compile. There are a few conditional complication directives, examples of the most useful: 
+
+		#ifdef - allows the preprocessor to check if an identifer was previously defined via 
+			 #define directive. If so the matching #endif is compiled. 
+	
+		#ifndef - Opposite of ifdef, allows you to check whether an identifier has NOT been 
+		    	  defined yet.
+
+		#if 0 - Excludes a block of code until the #endif if complied as a break point. 
+			Can be reenabled with #if 1.
+
+		
+	One important note of this is that directives ignore scope from local and global functions. You can define macros in functions that are out of scope and use those later, this is because the preprocessor does not follow normal C++ rules. 
+
+2.11) Header Files
+------------------
+
+	Header files are marked with the .h or .hpp file extension, they are used to forward declare variables and functions into a code file without writing it all in one file. A simple example is the <iostream> which contains cout and cin. This header file allows us to access and use those functions even though we arent declaring them in our code file. The preprocessor sees them being included with the directive and writes the contents of the header file for use later in the program. 
+
+	WHen using multiple code files it is important to add the files to the complier so they are able to be compiled and read from one another. This results in the executable in the result. Functions used in different files should also be named the same.  
+
+	Header files consist of two parts. The first being a header guard, and the second being the content of the header file. Using double quotes tells the compiler that this is a custom file, where as using the angle breackets < > this tells the compiler that these are not user defined header files. 
+
 
