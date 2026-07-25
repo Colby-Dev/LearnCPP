@@ -162,8 +162,34 @@ Basic guidelines for writing functions:
 
 	Header files are marked with the .h or .hpp file extension, they are used to forward declare variables and functions into a code file without writing it all in one file. A simple example is the <iostream> which contains cout and cin. This header file allows us to access and use those functions even though we arent declaring them in our code file. The preprocessor sees them being included with the directive and writes the contents of the header file for use later in the program. 
 
-	WHen using multiple code files it is important to add the files to the complier so they are able to be compiled and read from one another. This results in the executable in the result. Functions used in different files should also be named the same.  
+	When using multiple code files it is important to add the files to the complier so they are able to be compiled and read from one another. This results in the executable in the result. Functions used in different files should also be named the same.  
 
-	Header files consist of two parts. The first being a header guard, and the second being the content of the header file. Using double quotes tells the compiler that this is a custom file, where as using the angle breackets < > this tells the compiler that these are not user defined header files. 
+	Header files consist of two parts. The first being a header guard, and the second being the content of the header file. Using double quotes tells the compiler that this is a custom file,#include "add.h", where as using the angle brackets < > this tells the compiler that these are not user defined header files.
 
+	When header files are compiled any forward declaration is copied into the destination file with the #include directive. If there are two definitions of the function, which is considered unsafe the compiler will understand that the ambiguity is not enough and error. To avoid this all #include files should be header files and not .cpp files. 
 
+2.12) Header Guards
+-------------------
+
+	If a function or variable have more than one definition from including multiple header files this will result in an error. To prevent this we use header guards, which are conditional compliation directives that will not complie if multiple definitions are found. All header files should have a header guard on them to prevent multiple definitions. 
+
+	Modern C++ allows for the #pragma directive. This directive will allow you to use the same functionality of header guards by stating the amount of copies that are allowed such as #pragma once. Most IDE's do this for you on creation of the header file. 
+
+2.13) How to Design Your First Programs
+---------------------------------------
+
+	Programs should be designed before the code is actually written to avoid bloat and clear definitions of what task need to be handled. The following are general steps and help to design programs: 
+
+	1) Define your goal of the program: 
+
+		Defining your goal will organize the task that have to be fixed and the outcome that the user will see when the program is finished,
+		this will help us understand what the final product will look like after all the remaining task will be complete giving us a rough idea of the result. 
+
+	2) Define requirements: 
+
+		Understanding the goal of the program is just a part of the picture. Writing out the steps and task to accomplish to get there will keep the code
+		on track and less verbose. A single problem could have many requirements but its good to have to prevent edge cases. 
+
+	3) Define your tools, targets, and backup plan: 
+
+		
