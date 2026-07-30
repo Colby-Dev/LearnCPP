@@ -192,4 +192,18 @@ Basic guidelines for writing functions:
 
 	3) Define your tools, targets, and backup plan: 
 
-		
+		Defining the architecture of how the program will run, scale, etc. if critical. Defining the tech stack helps understand the need that each tool will 
+		satisfy. 
+
+	4) Break hard problems down into easy problems: 
+
+		Using a top down method of problem solving will allow the harder problems to be broken down into smaller pieces. This allows us to tackle the smaller issues
+		one at a time until the solution is reached. 
+
+	5) Figure out the sequence of events: 
+
+		Understanding the order of events in which the program will run helps understand how things will run together. This avoids bugs and helps avoid issues 
+		with recursive programs. 
+
+	
+			
