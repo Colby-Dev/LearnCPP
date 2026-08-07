@@ -1,0 +1,117 @@
+
+
+	Chapter 3 - Debugging C++ Programs
+==================================================
+
+   > Syntax and Semantic Errors
+   ----------------------------
+
+   	Syntax errors occur when you write a statement that is not valid according to C++. The compiler will detect these errors and issue warnings or errors with line numbers and a general message on what error is happening. 
+
+	A semantic error is an error in meaning. This means that while the syntax may be correct, the program has violated other rules of the language. Some semantic stuff can be caught by the compiler. 
+
+   > The Debugging Process
+   -----------------------
+
+	Debugging programs is best done in 6 steps: 
+
+		1) Find the root cause of the problem
+		2) Ensure you understand why the issue is occurring
+		3) Determine how to fix the issue 
+		4) Repair the issue causing the problem
+		5) Retest to ensure the problem has been fixed 
+		6) Retest to ensure no new problems have emerged
+
+   > A Strategy For Debugging
+   --------------------------
+
+   	By running the problems and setting break points we can identify bugs in our programs. The most efficient way of finding problems is by reproducing the problem and understanding how functions and sequences are running in the program. 
+
+	Using a trial and error method can be costly though as it could take considerable amount of time to compile and run the code then review the errors or output that is produced. 
+
+   > Basic Debugging Tactics
+   -------------------------
+
+   	Commenting out your code, By commenting out the code and seperating the 
+			   	  working code from the problematic code it can 
+				  identify issues faster. 
+
+	Validating your code flow, Understanding how the program is moving 
+				   sequentially through the program. When 
+				   functions are called it is important to know
+				   when they are and how they are used which can
+				   be useful when identifying bugs. 
+
+	Printing Values, Printing values in the code will help us understand what 
+			 values are being returned and used as the program runs. 
+			 This is helpful with programs that use math to calculate 
+			 values as we can spot check the right value and type are being output. 
+
+   > More Debugging Tactics
+   ------------------------
+
+	Using the std::cerr << "Your error text here" we can output bugs to a log which will help us determine what went wrong and shows us where a function was called or what ever error is produced. Doing this can cause clutter to the code so the better way to write in debugging mode is to create it with preprocessor directives. This can be shown in the Example1.cc file.
+
+	By commenting out the preprocessor #define ENABLE_DEBUG we can turn on and off the debug mode. This allows us to change how the program will act based on the mode its in allowing us to log what is exactly happening in our program and determine the sequence of how the program is moving. This subverts the risk of removing std::cerr from our program. 
+
+   > Using a Logger
+   ----------------
+
+   	Instead of using a conditional we can use a logger which records events to a seperate log file on the disk. Most applications and operating systems write log files. Writing to a log avoids clutter and allows us to review the output errors without running the program continuously. C++ standard contains std::clog that is intended to be used for writing logging information. By default std::clog writes to the error stream just like std::cerr, this can be rerouted to a different file. 
+
+	Using a library we can use a third party logging shown in Example2.cc
+
+   > Using an Integrated Deugger: Stepping
+   ---------------------------------------
+
+	When a program is ran it will continuously execute until an exception or the end of the program. All this information is tracked. Modern IDE's have a debugger tool that allows us to control this flow called the program state. The debugger allows us to control the programs state and view execution process. 
+
+	The debugger allows us to execute each part of the program sequentially one at a time. This is called stepping where each move through the program is a step. This is very useful for understanding the execution and calculations a program is making as it runs. Stepping is broken down into some parts: 
+
+	Step into - Executes the next statement in the normal execution path of the 
+		    program. It then pauses and waits for the next step to continue.
+
+	Step over - Executes the next statement in the normal path by pausing after 
+		    the next function executes. 
+
+
+   > Using An Integrated Debugger: Running and Breakpoints
+   -------------------------------------------------------
+
+   	Modern debuggers provide more tools to help us efficiently debug our programs. 
+	Run to cursor - execute command is one of these which executes the program 
+			until execution reaches the statement selected by your cursor
+
+	Continue - After a pause in the program state from debugging, the continue 
+		   command will allow the program to run as normal from that point.
+
+	Start - Performs the same command as Continue but cannot be ran mid debug 
+		session. It can only be ran before the debug session.
+
+	Breakpoints - A special marker that tells the debugger to stop execution of 
+		      the program at a specific point. It can be continued or 
+		      stopped when it hits this point. 
+
+	Next - Skips to the next break or past the paused part of the execution of 
+	       the program. 
+
+   > Using An Integrated Debugger: Watching Variables
+   --------------------------------------------------
+
+   	Watching variables allows us to inspect the value of a variable as the program is running. This helps us understand how a variable is changing. Modern IDE's break this down into local and global scope as well. 
+
+   > Using An Integrated Debugger: The Call Stack
+   ----------------------------------------------
+
+   	The call stack is all the active functions that have been called to get to the current point in the programs execution. It includes an entry for each function called, and positions the functions at the top of the stack for the most recent function ran. 
+
+   > Finding Issues Before They Become Problems
+   --------------------------------------------
+
+   	Writing code the first time is the preferred method but it is not always possible. To debug the code, and review it for bugs is called refactoring. This helps the code be less verbose and organized to be less complex. 
+
+	Defensive programming is a practice whereby the programmer tries to think about all the possibilities where the code can be exploited. Thinking this way can help us reduce the amount of issues. 
+
+	Testing the code peice by piece is useful for identifying bugs. Unit test which test these small parts are helpful in correcting any issues that may come up and helps verify that the small part of the code is functioning as expected. 
+
+
