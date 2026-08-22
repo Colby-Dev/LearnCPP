@@ -1,0 +1,43 @@
+
+   4.1 Introduction to Fundamental Data Types
+   ==========================================
+
+   > Bits, bytes, and memory addressing
+   ------------------------------------
+
+      	Random Access Memory (RAM) is temporary storage for programs to use, such as when a variable is declared, this is stored on the RAM. The smallest unit of memory is a bit, holding either a 1 or a 0. A byte is a sequence made up of 8 bits. These memory storages on the RAM are organized into memory addresses which allow us to find and access the contents of this memory. 
+
+   > Data types
+   ------------
+
+	Since all data on a computer is just a sequence of bits, we use a data type to tell the compiler how to interpret the contents of the memory such as str, int, char, etc. When values are assigned then complied, the compiler encodes them to binary format to allow the RAM and CPU to execute and understand the data. For example, a value of 65 is considered 0100 0001 (4 bytes) and stored in memory at an address assigned to it. 
+
+	Vice versa also happens when we need the program to convert back. The RAM and CPU work together to retrieve the stored content at the memory address and deliver it in a decoded format (from 0100 0001 to 65 in this case) 
+
+   > Fundamental Data Types
+   ------------------------
+
+   	The compiler and language itself understand basic types such as doubles and bools. These are called fundamental data types and are something that the lang knows inheritly. 
+
+   > Integer vs Intgral Types
+   --------------------------
+
+   	C++ defines these two types differently as show below: 
+
+	* Standard integer type - short, int, long, long long (including their signed and unsigned variants) 
+
+	* Integral types - bool, chartypes and the standard integer types
+
+	All integral types are stored in memory as integer values, but only integers display as its integer value when outputted. Bools will display either 1 or 0 as this is specific to the integral type. Integral types also do not include types that could be integers such as an enum. 
+
+   > Other sets of Types
+   ---------------------
+
+   	fundamental data types provide the basic types, whereas compound data types provide more complex data types and allow for user defined data types such as structs or enum magic numbers. 
+
+   > _t suffix
+   -----------
+
+	The _t suffix means type which is used in modern c++ to delcare user types instead of built in functions. 
+
+   	
