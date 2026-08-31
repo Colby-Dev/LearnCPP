@@ -40,4 +40,70 @@
 
 	The _t suffix means type which is used in modern c++ to delcare user types instead of built in functions. 
 
+
+   4.2 - Void
+   ==========
+
+   	Void type means no type hence the void meaning. This is an incomplete type which is decalred but not defined, therefore the compiler is aware of the existence but has not allocated memory to the value. Incomplete types cannot be instantiated and have no memory allocation. 
+
+   > Functions that do not return a value
+   --------------------------------------
+
+   	Void function types declare that the function does not have a return value. If any is returned an error will raise at compile time. No return statement is needed in these functions. 
+
+   > Deprecated: Functions that do not take parameters
+   ---------------------------------------------------
+
+   	Void was used as a way to indicate that a function didnt take a parameter but this is since deprecated as this happens implicitly.
+
+   4.3 - Object sizes and the sizeof operator
+   ==========================================
+
+   > Object sizes
+   --------------
+
+   	Objects in memory often do not take up jsut 1 byte. Usually they take up multiple bytes at the memory address but when we refer to them in the code we use the variable name, as the compiler takes care of understanding the size and how to retrieve the data from the address. 
+	
+	The basic understanding of the object size is n bits where n is an integer. The object can hold 2^n unique values, therefore with an 8-bit byte, a byte-sized object can hold 2^8 values. This makes a limit on the amount of values the object can store. Computers have a finite amount of memory and small portions of the memory are used with objects as long as they are in existence. Modern computers have so much memory that its never really an issue except when heavy asset programs are running like games. 
+
+
+   > Fundamental Data Type Sizes
+   -----------------------------
+
+	C++ does not explain many guidelines around memory as it is highly customizable in each program. The basic guidelines are that bytes are 8 bits, integral types are as follow: 
+
+		* char = 8 bits
+		* short = 16 bits
+		* int = 16 bits
+		* long = 32 bits
+		* long long = 64 bits
+
+   > The sizeof Operator
+   ---------------------
+
+   	The sizeof operator is a built in operator to the standard that will show the size of an object that is instantiated. The operator takes a variable or type and outputs the int of the size type. 
+	(see example 1) 
+
+   4.4 - Signed Integers
+   =====================
+
+	An integer is an integral type that can represent negative numbers and positive numbers (this includes 0). Basically signed integers get their names from the negative (-) infront of the number. Signed integers are native to certain types (short, int, long, and long long). These types can also take the signed keyword to identify them as signed. 
+
+   > Signed Integer Ranges
+   -----------------------
+
+   	The size of signed interger ranges match the 2 to the nth power. Therefore an 8-bit signed integer is shown as 2^8 = -128 to 127
+
+   > Overflow
+   ----------
+
+   	When a value is assigned to outside a bit range this can lead to undefined behavior. So if a value of 140 is assigned to an 8-bit signed integer the behavior will be undefined and considered overflow. 
+
+   4.5 - Unsigned Integers, and Why to Avoid Them
+   ==============================================
+
+   > Unsigned Integers
+   -------------------
+
    	
+
