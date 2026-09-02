@@ -104,6 +104,41 @@
 
    > Unsigned Integers
    -------------------
+	
+	Unsigned integers can hold only positive numbers (including 0). They are defined using the standard native types with the prefix "unsigned". Unsigned integer ranges from 0 - 255  compared to the range of a signed int of -128 to 127. Both can store 256 values but the ranges are very different. Unsigned integer overflow is similar to signed int in the way that the value is essentially divided amoong the bits and overflow bits get left with the result. For example: 
 
-   	
+	unsigned int x = {280};
+	cout << x << 
+
+	>>>> 24, (because 280 // 256 would give the remainder of 24. We can think of this as it resetting to 0 after reaching 256)
+	
+	Because of wrap around and the range of the unsigned and signed ints there are certain situations when one is better than the other. In most cases signed ints are better as overflowing bottom values is a common  struggle with unsigned ints. Wrapping with signed ints is also a common issue as the value ranges are not as large. 
+
+	
+   4.6 - Fixed width integers and size_t
+   =====================================
+
+	The int data type is not fixed because we need to have optimization for the architecture we are building on. This is something that allows us to build software specific to machines that it will be ran on. Because of this we can have issues with integers wrapping and creating bugs and undefined behaviors. C++ addresses this by used Fixed-width integers. 
+
+	> Fixed-Width Integers
+	----------------------
+
+	Fixed width ints are ways to guarantee that ints be the same size on any architecture. They are used from the cstdint header file. Regardless of the computer architecture 32 or 64 this int will behave the same if wrapping is to occurr or if it holds a large number. 
+
+	(see Example 2)
+
+	> Other Fixed-Width Downsides
+	-----------------------------
+
+	Fixed width ints do have some drawbacks. They are not always guarenteed to be defined and only exist on where there are fundamental integral types, thus the program will not compile if it does not recognize this. Fixed width ints can be slower as well. In some cases compiling the larger bit may be better. 
+
+	> Fast and Least Integral Types
+	-------------------------------
+
+	To help address the above downsides, C++ uses std::int_fast#_t and std::uint_fast#_t to provide the fastest signed/unsigned integer type with a width of at least # bits, where # = 8,16,32. This helps the CPU process the type as quickly as possible. 
+
+	We also have the std::int_least#_t and uint version to provide the smallest signed and unsigned integer. These both come from <cstdint> header file. 
+
+	(see Example 3) 
+
 
