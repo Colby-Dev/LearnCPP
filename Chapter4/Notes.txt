@@ -141,4 +141,28 @@
 
 	(see Example 3) 
 
+  4.7 - Introduction to Scientific Notation
+  =========================================
+
+  	Scientific notation in C++ works with e notation. Basically pi is written in as 3.14 but if we want to write this in an e notation we can say it was written as 3.14159e0 meaning that after the last digit there are no significant numbers or 0s. We can also use this with larger numbers like 41500 can be written as 4.15e4. 
+
+   4.8 - Floating Point Numbers
+   ============================
+
+   	A floating point type is a data type that can hold fracational numbers such as 1.12 vs just the whole number 1. There are 3 types of floating point data types: 
+
+	* Float --> 4 bytes
+	* double --> 8 bytes 
+	* long double --> 16 bytes
+
+	(see Example 4) 
+
+	> Floating Point Variables and Literals
+	---------------------------------------
+	
+	When using floating point variables it is important to use the decimal when defining a number. The reason is C++ has certain ranges depending on the natural data type regardless if it is signed or unsigned. This is evident if you try and print a large float like 9876543.21 vs just using the whole number 9876543. 
+
+
+
+
 
