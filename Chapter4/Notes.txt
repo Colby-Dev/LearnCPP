@@ -163,6 +163,70 @@
 	When using floating point variables it is important to use the decimal when defining a number. The reason is C++ has certain ranges depending on the natural data type regardless if it is signed or unsigned. This is evident if you try and print a large float like 9876543.21 vs just using the whole number 9876543. 
 
 
+	When outputting large variables we can use output manipulators to specify how many decimals we want to have included. This is imported with the <iomanip> library that can use the setprecision() function to specify the decimal places added. 
 
+   4.9 - Boolean Values
+   ====================
 
+	Boolean types exist as yes/no options in the form of True and False. They are declared with the bool keyword followed by the variable name and the assignment of the true or false keyword. Even though these assignments are labeled as "True" or "False" they are actually stored in memory as 0 or 1. Shown here: 
 
+	int main()
+	{
+		std::cout << true << '\n'; // prints bools as 0 or 1
+		std::cout << !true << '\n';
+
+	}
+
+	std::boolalpha will allow these to print actual words true or false
+
+   > Integer to Boolean conversion
+   -------------------------------
+
+   	Integers can be converted to bools without issue as long as the value corresponds to a valid boolean state of true (1) and false (0). Bools default to false therefore allowing user input on a boolean is not recommended because they because false. 
+
+   4.10 - Introduction to IF Statements
+   ====================================
+
+	The simplest conditional statement in programming is the if statement which allows programs to operate differently based on certain criteria. The if statement is structured as so: 
+
+	if (condition) {
+
+		true_statement;
+
+		}
+
+   > If-Else
+   ---------
+
+	If else allows the conditional statement to change based on how the data changes as the program executes. In example 5, we can see a basic example of this as the program switches the output depending on the user input. 
+
+   4.11 - Chars
+   ============
+
+	The char data type was designed to hold a single character. A character can be a single letter, number, symbol, or whitespace. Char data type is an integral type, so the underlying value is an integer. 
+
+	Chars that are integers are represented of ASCII characters such as 0 = @ symbol. We can show this by ouputting integers that are initalized as chars ans seeing the symobls or just normal values that are returned. 
+
+   4.12 - Type Conversion and Static_Cast
+   ======================================
+
+   	The process of converting data from one type to another type is called type conversion. Thus, an int argument can be converted to a double by adding the decimal point. This conversion is known as an implicit type conversion and the compiler can do this conversion as the program executes. 
+
+   > Type Conversion of a Value Produces a New Value
+   -------------------------------------------------
+
+   	A new result is given when the conversion takes place. The type conversion of a value to another type of value behaves much like a call to a function, which the return type matches the target of the conversion. 
+
+   > Explicit Type Conversion via Static_cast
+   ------------------------------------------
+
+   	Explicit type conversion allow us to explicitly tell the compiler to conver a alue from one type to another type. To preform an exolicit type conversion we can use the static_cast operator. The syntax looks like: 
+
+		static_vast<new_type>(expression) 
+
+	Static_cast takes the value from an expression as input, and returns that value converted into the type specified by new_type. 
+
+   > Sign Conversions Using static_cast
+   ------------------------------------
+
+   	Signed integral values can be converted to unsigned integrals and vice versa. In this case as long as the value is still in a usable range regardless of the value remains unchanged. 	   	
