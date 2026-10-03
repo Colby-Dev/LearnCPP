@@ -5,7 +5,7 @@
 
 
    5.1 Constants and Strings
-   -------------------------
+   =========================
 
    	A constant is a value that may not be changed after initialization and during the program's execution. C++ supports two kinds of constants: 
 
@@ -92,4 +92,33 @@
 
    	We prefer variables to preprocessor macros because, while macros are great they do not adhere to the scoping logic of C++ and can create issues. One example of this is defining a macro then trying to use that as a constant in a function call. This normally wouldnt be an issue but it presents a conflict where you have a constant macro then a constant parameter which could not be the same value and throw an error. 
 
-	Ma
+	Macros are often harder to debug as well as they are constants and do not change after being initalized. Many debuggers also do not see macros so they are unable to be debugged in that way. Macro substitution can easily make mistakes.
+
+   Using constant variables throughout a multi-file program
+   --------------------------------------------------------
+
+   	Often, a given constant needs to be used in many different files as its an algorithm or a mathmatical constant. It is much better to declare this in one spot and reuse the algorithm when needed. C++ allows a few ways of doing this which is covered in CH7. 
+
+   Nomenclature: type qualifiers
+   -----------------------------
+
+   	A type qualifer is a keyword that is applied to a type that modifies how that type behaves. The const used to declare a constant variable is called a const type qualifier. 
+
+   > 5.2 Literals
+   ==============
+
+   	Literals are values that are inserted directly into the code. An example of this is shown in Example1. Literals are sometimes called literal constants because their meaning cannot be redefined. 
+
+	(see Example 1) 
+
+   > The type of a literal 
+   -----------------------
+
+   	Just like objects have a type, all literals have a type. The type of a literal is deduced from the literal's value. A literal that is a whole number like 5, is deduced by the compiler to be type int. 
+
+   > Literal suffixes
+   ------------------
+
+   	If the default type of a literal is not as desired, you can change the type by adding a suffix. These suffix are not case sensitive except for a few cases. 
+
+	(see Example1) 
