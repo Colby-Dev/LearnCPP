@@ -121,4 +121,73 @@
 
    	If the default type of a literal is not as desired, you can change the type by adding a suffix. These suffix are not case sensitive except for a few cases. 
 
-	(see Example1) 
+	(see Example 1)
+
+   > Scientific notation for floating point literals
+   -------------------------------------------------
+
+   	There are 2 different ways to write floating point literals. 
+
+	1) Writing a number with decimal points
+	2) You also can add the e to represent the exponent as well
+
+	(see Example 2) 
+
+   5.3 - Numeral Systems (Decimal, binary, hexadecimal, and octal)
+   ===============================================================
+
+   Using normal numbers in C++, the language assumes them to be decimal numbers or base 10. Cpp also can use binary (base 2), hexadecimal (base 16) , and octal (base 8). 
+
+   > Octal and Hexadecimal Literals
+   --------------------------------
+
+   Octal is base 8 and only uses digits 0 - 7. When going past 7 they start to use 10+ skipping 8 and 9. You can see this in Example 3. Octals are hardly ever used. 
+
+   Hexadecimal is base 16, and is counted 0 - 9 then A - F. It is also shown in Example 3. 
+
+   (see Example 3) 
+
+   5.4 - The as-if rule and compile-time optimization 
+   ==================================================
+
+   Optimization is the process of modifying software to make it work more efficiently. Optimization can have a huge impact on the overall performance of an application. Some types of optimization are typically done by hand. A program called a profiler can be used to see how long certain parts of the program are taking to run. 
+
+   Other kinds of optimization can be performed automatically. A program that optimizes another program is called an optimizer. Optimizers are typically work at a low-level, looking for ways to improve statements or expressions by rewriting, reordering, or eliminating them. 
+
+   Modern C++ compilers are optimizing compilers, meaning they are capable of automatically optimizing your programs as part of the compilation process. Just like the preprocessor, nothing in the source code files are ever changed. 
+
+   > The as-if Rule
+   ----------------
+
+   Compilers are given a lot of leeway to optimize programs. The as-if says that the compiler can modify a program however it likes in order to produce more optimized code. 
+
+   Modern compilers employ a variety of different techniques in order to optimize a program effectively. Which techniques can be applied depends on the program and the quality of the compiler and optimizer. 
+
+   > Compile-time Evaluation 
+   -------------------------
+
+   Modern compilers are capable of fully or partially evaluating certain expressions at compile time (rather than runtime when the program executes) When the compiler fully or partially evaluates an expression at compile time, this is called compile time evaluation. 
+
+   For illustrative purposes, Example 4 will show simple optimization techniques that make use of compile time evaluation. Then, we'll continue our discussion of compile-time evaluation in subsequent lessons. 
+
+   > Constant Folding
+   ------------------
+
+   One of the original forms of compile time evaluation is called "constant folding". This is an optimization technique where the compiler replaces expressions that have literal operands with the result of the expression. By doing this the compiler would recognize that 3 +4 has constant operands and replace the expression with just 7. 
+
+   (see Example 4) 
+
+   > Constant Propagation
+   ----------------------
+
+   A compiler technique that replaces a constant variable with the actual value in a reevaluated program. In the first pass of the var the program will not do this but in order to optimize the codebase it will read that this variable contains an unchanging number and replace the variable with the constant. 
+
+   > Dead Code Elimination
+   -----------------------
+
+   The compiler can also detact code that us unsuable and therefore considered dead. The code is either unreachable or never referenced so the compiler will remove it. This part of the code is considered optimized out. 
+
+   > Const Variables are Easier to Optimize
+   ----------------------------------------
+
+
