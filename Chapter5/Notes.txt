@@ -4,6 +4,7 @@
 	================================
 
 
+
    5.1 Constants and Strings
    =========================
 
@@ -104,6 +105,8 @@
 
    	A type qualifer is a keyword that is applied to a type that modifies how that type behaves. The const used to declare a constant variable is called a const type qualifier. 
 
+
+
    > 5.2 Literals
    ==============
 
@@ -133,6 +136,8 @@
 
 	(see Example 2) 
 
+
+
    5.3 - Numeral Systems (Decimal, binary, hexadecimal, and octal)
    ===============================================================
 
@@ -146,6 +151,8 @@
    Hexadecimal is base 16, and is counted 0 - 9 then A - F. It is also shown in Example 3. 
 
    (see Example 3) 
+
+
 
    5.4 - The as-if rule and compile-time optimization 
    ==================================================
@@ -175,19 +182,187 @@
 
    One of the original forms of compile time evaluation is called "constant folding". This is an optimization technique where the compiler replaces expressions that have literal operands with the result of the expression. By doing this the compiler would recognize that 3 +4 has constant operands and replace the expression with just 7. 
 
-   (see Example 4) 
+   (see Example 4)
 
-   > Constant Propagation
+
+
+
+   5.5 - Constant Expressions
+   ==========================
+
+   Expressions that preform input and output cant be performed at compile time for obvious reasons, thus they are required to be performed at runtime. 
+
+   In the prior lesson we saw how constants were evaluated with as if compiling at shifted work to optimize running the program at compile time reducing dead code and continuously evaluated code. 
+
+   > Benefits of Compile-Time Programming
+   --------------------------------------
+
+   While the as-if rule helps us improve performance we are unable to understand the logic behind the compiler unless we delve into the compiler itself. This can yield different results based on the build of the compiler and architecture of the computer it is run on. 
+
+   To improve this, the C++ language provides ways for us to be explicit about what parts we want to execute. This is called compile time programming: 
+
+   * Performance - This makes our programs faster and smaller. The more code we can 
+   		   ensure is capable of evaluating at compile time, the more performance.
+
+   * Versatility - Code that uses compile time values can be used anywhere. Code that 
+   		   relies on as-if rules to evaluate at compile time can't be used in 
+		   these places, to allow code that compiles today to do so in the future
+
+   * Predictability - We can have the compiler halt if the code being evaluated cannot 
+   		      be evaluated at compile time. Allowing us to ensure code we want 
+		      will execute at compile time. 
+
+   * Quality - We can have the compiler reliabily detect certain kinds of programming 
+   	       errors at compile-time and halt the build. This is much easier than 
+	       debugging at runtime. 
+
+
+   To summarize, compile-time evaluation allows us to write programs that are both more performant and of higher quality (more secure and less buggy) So while compile-time evaluation does add some additional complexity to the language, the benefits can be substantial
+
+   > Constant Expressions
    ----------------------
 
-   A compiler technique that replaces a constant variable with the actual value in a reevaluated program. In the first pass of the var the program will not do this but in order to optimize the codebase it will read that this variable contains an unchanging number and replace the variable with the constant. 
+   Constant expressions are expression that must be evaluatable at compile-time, along with rules that determine how the compiler should handle these expressions. Each part of the expression must be evaluatable at compile-time. 
 
-   > Dead Code Elimination
+   The opposite of this is informally called a runtime expression. 
+
+   > What can be in a constant expression?
+   ---------------------------------------
+
+   Constant expressions can include: 
+
+   	* Literals
+	* Most operators with constants (3 * 2)
+	* Const integral variables with const keyword
+	* Constexpr variable
+	* Constexpr function calls
+
+   (see Example 5) 
+
+   
+
+   5.6 - Constexpr Variables
+   =========================
+
+   We take a closer look at how we create variables that can be used in constant expressions in modern C++. We'll also explore our first method for ensuring that code actually executes at compile time. 
+
+   > The Compile-Time const Challenge 
+   ----------------------------------
+
+   A const variable with an integral type and a constant expression initializer can be used in a constant expression. All other const variables cannot be used in constant expressions. 
+
+   The use of const to create variables that can be used in constant expressions has a few challenges. We can see this below:
+
+   	int a = { 5 };  // not const
+
+   	const int b = { a }; // not a const expression 
+
+   	const int c = { 5 }; // a constant expression 
+
+   	const int d = { someVar }; // not clear whether d is a const expression
+
+   	const int e = { get Value() }; // not clear if e is a const expression
+
+
+   > The constexpr Keyword
    -----------------------
 
-   The compiler can also detact code that us unsuable and therefore considered dead. The code is either unreachable or never referenced so the compiler will remove it. This part of the code is considered optimized out. 
+   We can use the constexpr keyword to ensure we tell the compiler that we want this variable to be a compile time constant. A constexper variable is always a compile-time constant. 
 
-   > Const Variables are Easier to Optimize
-   ----------------------------------------
+   (see Example 6) 
+
+
+   > The Meaning of const vs constexpr For Variables
+   -------------------------------------------------
+
+   For variables: 
+
+   	* const means that value cannot be changed after initialization
+
+	* constexpr means the object can be used in a constant expression
+
+   Constexpr variables are implicitly const. Const variables are not implicitly constexpr. Although a variable can be defined as both constexpr and const. 
+
+   > Intro to constexpr Functions
+   ------------------------------
+
+   A constexpr function is a function that can be called in a constant expression. This function must evaluate at compile-time when the invoked and use only const parameters. 
+
+
+   5.7 - Introduction to std::string
+   =================================
+
+   While C style literals are fine to use, ( std::cout << "Hello";) they behave oddly, and are hard to work with. C++ has introduced two additional types that are easier to work with: 
+
+   * std::string
+
+   * std::string_view
+
+   > Introducing std::string
+   -------------------------
+
+   The easiest way to work with string objects in C++ is with the std::string type, which lives in the <string> header. 
+
+   (see Example 7) 
+
+   > What The Heck is std::ws ? 
+   ----------------------------
+
+   C++ supports input manipulators which alter inputs. The std::ws input manipulator tells std::cin to ignore any leading whitespace before extraction. Leading whitespace is any whitespace character that occurs at the strat of a string. 
+
+   > The length of a std::string
+   -----------------------------
+
+   We can find how many characters are in a std::string by using the .length() method or member function as c++ calls them. In order to assign the length we must use static_cast to avoid warnings about signed/unsigned ints
+
+   int length = { static_cast<int>(name.length()) };
+
+   > Initializing A std::string Is Expensive
+   -----------------------------------------
+
+   Whenever a std::string is initalized, a copy of the string used to initialized it is made. Making copies of strings is expensive, so care should be taken to minimize the number of copies made. 
+
+   > Do Not Pass std::string By Value
+   ----------------------------------
+
+   When a std::string is passed to a function by value, the std::string function parameter must be instantiated and initialized with the argument. 
+
+   Do not pass std::string by value, as it makes an expsensive copy.
+
+   > Returning a std::string
+   -------------------------
+
+   When a function returns by value to the caller, the return value is normally copied from the function back to the caller. It is okay to return strings in this way to the calling function without issue. Do not use a variable though to return the string as that will create an expensive copy. 
+
+   > Literals For std::string
+   --------------------------
+
+   Double quoted string literals are C-style strings by default. We can create string literals with type std::string by using a s suffix after the double-quoted string literal. The s must be lower case. 
+
+   std::cout << "foo\n";
+   std::cout << "goo\n"s;
+
+
+
+   5.8 - Introduction To std::string_view
+   ======================================
+
+   Using std::string to initialize a string can create an inefficient copies without really doing anything with them. So if we are making variables just to output them this is inefficient and can be done in a better way. 
+
+   > std::string_view (C++ 17)
+   ---------------------------
+
+   To address that inefficiency with std::string copies, c++ 17 uses std::string_view that provides read-only access to an existing string. This means we can access the string and use the value being view but we cannot modify it thus removing copies. 
+
+   (see Example 8) 
+
+   > std::string_view Can Be Initialized with Many Different Types of Strings
+   --------------------------------------------------------------------------
+
+   One of the neat things about string_view is that this object can be initialized with any string type value. However string_view will not implicitly convert to std::string. You can also use the suffix by accessing namespace for string_literals and string_view_literals to convert Cstyle strings: 
+
+   	using namespace std::string_literals; 
+
+	std::cout << "foo\n"s; 
 
 
